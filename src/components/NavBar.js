@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '@mui/material/Button';
+
 
 function NavBar(){
     return(
@@ -7,10 +9,10 @@ function NavBar(){
                 <img src="logo.jpg" className="imagen-logo" alt="logo" />
             </div>
             <ul className="navbar">
-                <li><button>Home</button></li>
-                <li><button>Productos</button></li>
-                <li><button>Nosotros</button></li>
-                <li><button>Contacto</button></li>
+                <li><Button variant="contained">Home</Button></li>
+                <li><Button variant="contained">Productos</Button></li>
+                <li><Button variant="contained">Nosotros</Button></li>
+                <li><Button variant="contained">Contacto</Button></li>
             </ul>
         </header>
     );
