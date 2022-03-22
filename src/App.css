@@ -3,8 +3,13 @@
 }
 
 .imagen-logo {
-  height: 7rem;
+  height: 5rem;
   pointer-events: none;
+}
+
+.logoDiv{
+  display: flex;
+  align-items: center;
 }
 
 .App-header {
@@ -13,7 +18,7 @@
   flex-direction: row;
   justify-content: space-between;
   color: white;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .navbar{
@@ -26,4 +31,15 @@
 .navbar li button{
   margin: 0.6rem;
   font-size: 1.2rem;
+}
+
+.imgCarrito{
+  display: flex;
+  align-items: center;
+  width: 3rem;
+  justify-content: center;
+}
+
+.iconoCarrito{
+  color: white;
 }
