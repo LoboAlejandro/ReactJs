@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import BasicModal from './Modal';
+import Carrito from '../Main/Carrito';
 
 function NavBar(){
     return(
@@ -14,9 +14,7 @@ function NavBar(){
                 <li><Button variant="contained">Nosotros</Button></li>
                 <li><Button variant="contained">Contacto</Button></li>
             </ul>
-            <div className='imgCarrito'>
-                <BasicModal/>
-            </div>
+            <Carrito/>
         </header>
     );
 }
