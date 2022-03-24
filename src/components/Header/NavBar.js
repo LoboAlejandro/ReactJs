@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@mui/material/Button';
-import Carrito from '../Main/Carrito';
+import Carrito from './Carrito';
 
 function NavBar(){
     return(
