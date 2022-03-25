@@ -43,3 +43,60 @@
 .iconoCarrito{
   color: white;
 }
+
+.divProducto{
+  border: 1px black solid;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  align-items: center;
+}
+
+.divImagen{
+  width: 8rem;
+  height: 8rem;
+  background-color: gray;
+}
+
+.divBotonera{
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.btnSumaResta{
+  background-color: #4040db;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  height: 2rem;
+  width: 2rem;
+  font-size: 1.5rem;
+}
+
+.btnSumaResta:hover{
+  background-color: #6565dd;
+  cursor: pointer;
+}
+
+.btnAgregar{
+  background-color: #4178dd;
+  color: white;
+  width: 7rem;
+  border: none;
+  border-radius: 7px;
+}
+
+.btnAgregar:hover{
+  background-color: #628ee0;
+  color: black;
+  cursor: pointer;
+}
+
+.btnAgregar:disabled{
+  background-color: black;
+}
