@@ -31,7 +31,7 @@ export const Item = ({product})=>{
                 <h3>{count}</h3>
                 <button className='btnSumaResta' onClick={sumarItem}>+</button>
             </div>
-            <ItemCount count={count}/>
+            <ItemCount count={count} id={id}/>
             <p>Quedan {stock} unidad/es</p>
         </div>
     )
