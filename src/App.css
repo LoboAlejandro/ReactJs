@@ -44,18 +44,24 @@
   color: white;
 }
 
-.divProducto{
+.itemList{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.cardItem{
   border: 1px black solid;
-  width: fit-content;
+  width: 12rem;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
   align-items: center;
+  margin: 0.5rem;
 }
 
 .divImagen{
-  width: 8rem;
-  height: 8rem;
+  width: 10rem;
+  height: 10rem;
   background-color: gray;
 }
 
