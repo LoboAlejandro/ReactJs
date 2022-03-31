@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import { dataProducts } from '../../../../data/data';
-import { Item } from './Item/Item';
+import { dataProducts } from '../../data/data';
+import { Item } from './Item';
     
 export default function ItemList(){
     
