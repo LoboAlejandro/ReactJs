@@ -38,7 +38,7 @@ export default function ItemList(){
                     })
                 }</>
             ) : (
-                <h3>Cargando productos...</h3>
+                <h2>Cargando productos...</h2>
             )}
         </div>
     );
