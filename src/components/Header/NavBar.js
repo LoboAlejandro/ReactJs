@@ -12,12 +12,12 @@ function NavBar(){
                 </Link>
             </div>
             <ul className="navbar">
-                <li><Button variant="contained"><Link to={'/'}>Home</Link></Button></li>
-                <li><Button variant="contained"><Link to={'/productos'}>Productos</Link></Button></li>
-                <li><Button variant="contained"><Link to={'/nosotros'}>Nosotros</Link></Button></li>
-                <li><Button variant="contained"><Link to={'/contacto'}>Contacto</Link></Button></li>
+                <li><Link to={'/'} className='linkHeader'><Button variant="contained">Home</Button></Link></li>
+                <li><Link to={'/productos'} className='linkHeader'><Button variant="contained">Productos</Button></Link></li>
+                <li><Link to={'/nosotros'} className='linkHeader'><Button variant="contained">Nosotros</Button></Link></li>
+                <li><Link to={'/contacto'} className='linkHeader'><Button variant="contained">Contacto</Button></Link></li>
+                <li><Carrito/></li>
             </ul>
-            <Carrito/>
         </header>
     );
 }

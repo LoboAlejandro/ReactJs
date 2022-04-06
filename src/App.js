@@ -20,7 +20,7 @@ function App() {
           <Route path='/productos' element={<InConstructionPage/>}/>
           <Route path='/nosotros' element={<InConstructionPage/>}/>
           <Route path='/contacto' element={<InConstructionPage/>}/>
-          <Route path='/productos/:id' element={<DetailPage/>}/>
+          <Route path='/producto/:id' element={<DetailPage/>}/>
           <Route path="*" element={<NotFoundPage/>}/>
         </Routes>
       </BrowserRouter>

@@ -31,6 +31,19 @@
 .navbar li button{
   margin: 0.6rem;
   font-size: 1.2rem;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.navbar li button:hover{
+  background-color: #373e49;
+  cursor: pointer;
+}
+
+.linkHeader{
+  text-decoration: none;
+}
+.btnHeader{
 }
 
 .imgCarrito{
@@ -90,12 +103,38 @@
   cursor: pointer;
 }
 
+.btnsCard{
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+}
+
+.btnVerMas{
+  background-color: #4040db;
+  font-size: 0.9rem;
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 7px 0 0 7px;
+}
+
+.btnVerMas:hover{
+  background-color: #6565dd;
+  cursor: pointer;
+}
+
 .btnAgregar{
   background-color: #4178dd;
   color: white;
-  width: 7rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.4rem;
   border: none;
-  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  border-radius: 0 7px 7px 0;
 }
 
 .btnAgregar:hover{
@@ -105,5 +144,11 @@
 }
 
 .btnAgregar:disabled{
-  background-color: black;
+  background-color: rgb(189, 189, 189);
+  color: black;
+  cursor: default;
+}
+
+.iconoCarritoCard{
+
 }
