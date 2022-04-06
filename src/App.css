@@ -5,6 +5,7 @@
 .imagen-logo {
   height: 5rem;
   pointer-events: none;
+  margin-top: 0.2rem;
 }
 
 .logoDiv{
@@ -43,8 +44,6 @@
 .linkHeader{
   text-decoration: none;
 }
-.btnHeader{
-}
 
 .imgCarrito{
   display: flex;
@@ -64,19 +63,35 @@
 }
 
 .cardItem{
-  border: 1px black solid;
-  width: 12rem;
+  border: 1px grey solid;
+  width: 14rem;
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
   align-items: center;
   margin: 0.5rem;
+  border-radius: 7px;
+  justify-content: space-between;
+  min-height: 26rem;
 }
 
 .divImagen{
-  width: 10rem;
-  height: 10rem;
-  background-color: gray;
+  width: 13rem;
+  height: 13rem;
+  object-fit: cover;
+}
+
+.imagenProductos{
+  width: 100%;
+}
+
+.divData__h2{
+  line-height: 25px;
+  margin: 0;
+}
+
+.divData__h3{
+  margin: 0;
 }
 
 .divBotonera{
@@ -144,11 +159,87 @@
 }
 
 .btnAgregar:disabled{
-  background-color: rgb(189, 189, 189);
+  background-color: #bdbdbd;
   color: black;
   cursor: default;
 }
 
-.iconoCarritoCard{
+.stock{
+  margin: 0;
+}
 
+.productDetail{
+  display: flex;
+  flex-direction: row;
+}
+
+.productData{
+  display:flex;
+  flex-direction: column;
+  width: 65%;
+  align-items: center;
+  padding: 2rem;
+  text-align: left;
+}
+
+.divImagenDetail{
+  width: 30rem;
+  height: 30rem;
+  margin: 1rem;
+}
+
+.imagenProductosDetail{
+  width: 100%;
+}
+
+.productInfo{
+  width: 33%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.seleccionarCant{
+  margin-top: 7rem;
+  font-size: 1.2rem;
+  color: #373e49;
+}
+
+.divBotoneraDetail{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.btnSumaRestaDetail{
+  font-size: 2rem;
+  background-color: #4040db;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+}
+
+.descripcion{
+  font-size: 1.6rem;
+  color: #595f68;
+}
+
+.dataDetail{
+  text-align: left;
+  margin-top: 3rem;
+}
+
+.dataDetail p{
+  font-size: 1rem;
+  padding: 1rem;
+}
+
+.dataG{
+  background-color: #e9e9e9;
 }

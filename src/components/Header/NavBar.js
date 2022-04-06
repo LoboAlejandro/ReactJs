@@ -8,7 +8,7 @@ function NavBar(){
         <header className="App-header">
             <div className="logoDiv">
                 <Link to={'/'}>
-                    <img src="logo.jpg" className="imagen-logo" alt="logo" />
+                    <img src="../img/logo.jpg" className="imagen-logo" alt="logo" />
                 </Link>
             </div>
             <ul className="navbar">
