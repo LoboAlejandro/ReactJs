@@ -3,9 +3,10 @@ import ItemCount from './ItemCount';
 
 export default function ItemDetail({producto}) {
     const [products, setProducts]= useState([{}]);
+    const [terminarCompras, setTerminarCompras]= useState([]);
     const {id, nombre, precio, imagen, fabricante, memoriaGrafica, interfazPM, tamañoMemoria, conectividad, descripcion, stock} = producto;
-
-    let initial= 1;
+    
+    let initial= 0;
 
     if(stock === 0){
         initial= 0;
@@ -13,8 +14,6 @@ export default function ItemDetail({producto}) {
         initial= 1;
     }
 
-    const [count, setCount]= useState(initial);
-    
     const sumarItem= () =>{
         if(count < stock){
             setCount(count + 1);
@@ -26,9 +25,11 @@ export default function ItemDetail({producto}) {
             setCount(count - 1);
         };
     };
+    
+    
     setTimeout(()=>{
-            const stockHide= document.querySelector(`.stock-${id}`);
-
+        const stockHide= document.querySelector(`.stock--${id}`);
+        
         if(stock < 10){
             if(stock > 1){
                 stockHide.textContent= `Quedan las últimas ${stock} unidades`;
@@ -42,13 +43,14 @@ export default function ItemDetail({producto}) {
             stockHide.style.visibility= 'hidden';
         }
     }, 10)
-
+    
+    
     const getProducts= new Promise((resolve, reject)=>{
         return setTimeout(()=>{
             return resolve(producto);
         }, 2000)
     })
-
+    
     async function getProductsAsync(){
         try{
             const productos= await getProducts;
@@ -56,14 +58,27 @@ export default function ItemDetail({producto}) {
         }catch(error){
             console.log('error', error);
         }
-    } 
+    }
     
     useEffect(()=>{
+        setTerminarCompras('Comprar');
         getProductsAsync();
     },[])
 
-    const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(precio);
+    const [count, setCount]= useState(initial);
+    
 
+    const ItemCountDelete= (countItems) =>{
+        if(terminarCompras === 'Comprar'){
+            alert(`Has agregado ${countItems} productos`);
+            setTerminarCompras('Terminar Compra');
+        }else{
+            setTerminarCompras('Comprar');
+        }
+    }
+
+    const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(precio);
+    
     return(
         <article className="productDetail">
             {products.length ? (<h2>Cargando item...</h2>)
@@ -85,8 +100,8 @@ export default function ItemDetail({producto}) {
                             <h3>{count}</h3>
                             <button className={`btnSumaRestaDetail`} onClick={sumarItem}>+</button>
                         </div>
-                        <ItemCount count={count} id={id}/>
-                        <p>Quedan {stock} unidad/es</p>
+                        <ItemCount count={count} id={id} clase='ItemCountDetail' fontSize="large" terminarCompras={terminarCompras} action={ItemCountDelete}/>
+                        <p className={`stock--${id}`}></p>
                         <div className='dataDetail'>
                             <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
                             <p className='dataW'>Memoria Gráfica: <b>{memoriaGrafica}</b></p>

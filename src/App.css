@@ -1,3 +1,10 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
 .App {
   text-align: center;
 }
@@ -52,7 +59,7 @@
   justify-content: center;
 }
 
-.iconoCarrito{
+.ItemCountItem-iconoCarrito, .iconoCarrito{
   color: white;
 }
 
@@ -118,13 +125,13 @@
   cursor: pointer;
 }
 
-.btnsCard{
+.ItemCountItem-btnsCard{
   display: flex;
   flex-direction: row; 
   align-items: center;
 }
 
-.btnVerMas{
+.ItemCountItem-btnVerMas{
   background-color: #4040db;
   font-size: 0.9rem;
   color: white;
@@ -135,12 +142,12 @@
   border-radius: 7px 0 0 7px;
 }
 
-.btnVerMas:hover{
+.ItemCountItem-btnVerMas:hover{
   background-color: #6565dd;
   cursor: pointer;
 }
 
-.btnAgregar{
+.ItemCountItem-btnAgregar{
   background-color: #4178dd;
   color: white;
   width: fit-content;
@@ -152,16 +159,52 @@
   border-radius: 0 7px 7px 0;
 }
 
-.btnAgregar:hover{
+.ItemCountItem-btnAgregarP{
+  display: none;
+}
+
+.ItemCountItem-btnAgregar:hover{
   background-color: #628ee0;
   color: black;
   cursor: pointer;
 }
 
-.btnAgregar:disabled{
+.ItemCountItem-btnAgregar:disabled{
   background-color: #bdbdbd;
   color: black;
   cursor: default;
+}
+
+.ItemCountDetail-btnVerMas{
+  display: none;
+}
+
+.ItemCountDetail-btnAgregar{
+  background-color: #4040db;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 12rem;
+  border: none;
+  border-radius: 7px;
+  padding: 1rem;
+}
+
+.ItemCountDetail-btnAgregar:hover{
+  background-color: #6565dd;
+  cursor: pointer;
+}
+
+.ItemCountDetail-btnAgregar:disabled{
+  background-color: #bdbdbd;
+  cursor: default;
+  color: black;
+}
+
+.ItemCountDetail-btnAgregarP{
+  font-size: 1.5rem
 }
 
 .stock{
@@ -242,4 +285,13 @@
 
 .dataG{
   background-color: #e9e9e9;
+}
+
+.terminarCompra{
+  background-color: #2aba2a;
+}
+
+.terminarCompra:hover{
+  background-color: #59cd59;
+  cursor: pointer;
 }
