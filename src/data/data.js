@@ -4,7 +4,7 @@ export const dataProducts = [
         nombre: 'RTX 2060 ASUS DUAL',
         precio: 120000,
         imagen: 'RTX-2060-ASUS.jpeg',
-        category: 'Placa de video',
+        category: 'mother',
         fabricante: 'Nvidia',
         memoriaGrafica: 'GDDR6',
         interfazPM:'PCI-Express 4.0',
