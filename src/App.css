@@ -295,3 +295,11 @@
   background-color: #59cd59;
   cursor: pointer;
 }
+
+.divCargandoError{
+  margin-top: 10rem;
+}
+
+.msjError{
+  color: red;
+}
