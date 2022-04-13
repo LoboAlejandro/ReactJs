@@ -357,6 +357,10 @@
   align-self: flex-end;
 }
 
+.cartContainer{
+  padding: 1rem;
+}
+
 .itemCartFinal{
   display: flex;
   flex-direction: row;
@@ -373,4 +377,19 @@
 
 .divDataCarrito{
   text-align: center;
+}
+
+.divPrecios{
+  text-align: end;
+}
+
+.divPrecios h2{
+  background-color: #bdbdbd;
+}
+
+.divBotoneraCarrito{
+
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
 }

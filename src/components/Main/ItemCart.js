@@ -28,14 +28,15 @@ export default function ItemCart(){
                         </div>
                     )
                 })}
-                {
-                    <div>
-                        <h3></h3>
-                        <h4></h4>
-                        <h2></h2>
-                    </div>
-                }
-                <button onClick={clearCart}>Vaciar Carrito</button>
+                <div className="divPrecios">
+                    <h3>Precio: </h3>
+                    <h4>+ iva: </h4>
+                    <h2>TOTAL: </h2>
+                </div>
+                <div className="divBotoneraCarrito">
+                    <button onClick={clearCart}>Vaciar Carrito</button>
+                    <button>Comprar Carrito</button>
+                </div>
             </div>
         </>
     )
