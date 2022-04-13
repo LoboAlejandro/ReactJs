@@ -1,21 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import CartContext from '../../Context/CartContext';
 
-export default function ItemCount({count, id, clase, fontSize, action, terminarCompras}){
+export default function ItemCount({count, product ,clase, fontSize, action, terminarCompras}){
     const [linkTo, setLinkTo] = useState([]);
     const [terminarCompra, setTerminarCompra] = useState([]);
+    const {cartProducts, addProductToCart} = useContext(CartContext);
+    const {id, nombre, precio, imagen, stock} = product;
     
     const onAdd = () =>{
         if(clase === 'ItemCountDetail'){
             action(count);
-            if(terminarCompras != 'Comprar'){
+            if(terminarCompras !== 'Comprar'){
                 setLinkTo('');
                 setTerminarCompra('');
             }else{
                 setLinkTo('/Cart');
                 setTerminarCompra('terminarCompra')
             }
+        }else{
+            addProductToCart(product, count)
         }
     }
 

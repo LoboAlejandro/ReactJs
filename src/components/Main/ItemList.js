@@ -22,7 +22,6 @@ export default function ItemList(){
             setProducts([]);
             category ? filterProductByCategory(productos, category) : setProducts(productos);
         }catch(error){
-            console.log('error', error);
         }
     } 
     
@@ -46,11 +45,9 @@ export default function ItemList(){
         msjError.style.visibility= 'hidden';
         setTimeout(()=>{
             if(prueba === 'error'){
-                console.log('error');
                 msjCargando.style.visibility= 'hidden';
                 msjError.style.visibility= 'visible';
             }else{
-                console.log('correcto');
             }
         }, 2000)
     }, [prueba])

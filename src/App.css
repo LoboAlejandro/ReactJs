@@ -303,3 +303,33 @@
 .msjError{
   color: red;
 }
+
+#carritoMenu{
+  text-align: center;
+}
+
+#carritoMenu li:hover{
+  
+  cursor: default;
+  background-color: transparent;
+}
+
+.listaProductosCarrito{
+  display: flex;
+  flex-direction: column;
+}
+
+.listaProductosCarrito li{
+  min-height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30rem;
+  text-align: center;
+  align-items: center;
+}
+
+.imgItemsCarrito{
+  width: 5rem;
+}
+

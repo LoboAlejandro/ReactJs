@@ -100,7 +100,7 @@ export default function ItemDetail({producto}) {
                             <h3>{count}</h3>
                             <button className={`btnSumaRestaDetail`} onClick={sumarItem}>+</button>
                         </div>
-                        <ItemCount count={count} id={id} clase='ItemCountDetail' fontSize="large" terminarCompras={terminarCompras} action={ItemCountDelete}/>
+                        <ItemCount count={count} /* id={id} */ product={producto} clase='ItemCountDetail' fontSize="large" terminarCompras={terminarCompras} action={ItemCountDelete}/>
                         <p className={`stock--${id}`}></p>
                         <div className='dataDetail'>
                             <p className='dataG'>Fabricante: <b>{fabricante}</b></p>

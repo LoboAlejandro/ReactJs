@@ -1,9 +1,14 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
+import { useContext } from 'react';
+//MUI
 import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
+import CartContext from '../../Context/CartContext';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Delete } from '@mui/icons-material';
 
 const style = {
     position: 'absolute',
@@ -18,30 +23,86 @@ const style = {
 };
 
 export default function Carrito() {
-    const [open, setOpen] = React.useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
 
+    const {cartProducts} = useContext(CartContext)
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    
     return (
         <div className='imgCarrito'>
-            <Button onClick={handleOpen}>
+            <Button onClick={handleClick}
+                size="small"
+                sx={{ ml: 2 }}
+                aria-controls={open ? 'account-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                >
                 <ShoppingCartIcon className="iconoCarrito" fontSize="large"/>
             </Button>
-            <Modal
+            <Menu
+                anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-                >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        Modal de prueba
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Acá irian objetos
-                    </Typography>
-                </Box>
-            </Modal>
+                onClick={handleClose}
+                PaperProps={{
+                    elevation: 0,
+                    sx: {
+                        overflow: 'visible',
+                        filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                        mt: 1.5,
+                        '&:before': {
+                            content: '""',
+                            display: 'block',
+                            position: 'absolute',
+                            top: 0,
+                            right: 25,
+                            width: 10,
+                            height: 10,
+                            bgcolor: 'background.paper',
+                            transform: 'translateY(-50%) rotate(45deg)',
+                            zIndex: 0,
+                        },
+                    },
+                }}
+                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                id="carritoMenu"
+            >
+                <h3 className='tituloCarrito'>Carrito de compras</h3>
+                <Divider />
+                <div className='listaProductosCarrito'>
+                    {cartProducts.map((cartProduct)=>{
+                        const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(cartProduct.precio);
+                        return(
+                            <MenuItem onClick={''} className='productosCarrito' key={cartProduct.id}>
+                                <div>
+                                    <img className='imgItemsCarrito' src={`img/${cartProduct.imagen}`} alt={cartProduct.nombre}></img>
+                                </div>
+                                <div>
+                                    <h4>{cartProduct.nombre}</h4>
+                                    <p>{precioFinal}</p>
+                                </div>
+                                <div>
+                                    <DeleteIcon/>
+                                </div>
+                            </MenuItem>
+                        )
+                    })}
+                </div>
+                <Divider />
+                <MenuItem>
+                    <button>Finalizar Compra</button>
+                </MenuItem>
+            </Menu>
         </div>
     );
 }

@@ -1,7 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import ItemCount from './ItemCount';
+// import CartContext from '../../Context/CartContext';
 
 export const Item = ({product})=>{
+
+    // const {cartProducts, addProductToCart} = useContext(CartContext);
+
     const {id, nombre, precio, imagen, stock} = product;
     let initial= 1;
 
@@ -58,7 +62,7 @@ export const Item = ({product})=>{
                 <h3>{count}</h3>
                 <button className={`btnSumaResta`} onClick={sumarItem}>+</button>
             </div>
-            <ItemCount count={count} id={id} clase="ItemCountItem" fontSize='small'/>
+            <ItemCount count={count} product={product} clase="ItemCountItem" fontSize='small'/>
             <p className={`stock stock-${id}`}></p>
         </div>
     )
