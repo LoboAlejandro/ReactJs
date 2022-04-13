@@ -308,8 +308,13 @@
   text-align: center;
 }
 
+.MuiMenu-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #carritoMenu li:hover{
-  
   cursor: default;
   background-color: transparent;
 }
@@ -329,7 +334,43 @@
   align-items: center;
 }
 
+.tituloCarrito{
+  padding: 0 0.5rem;
+}
+
 .imgItemsCarrito{
   width: 5rem;
 }
 
+.btnFinalizarCarrito{
+  background-color: #4040db;
+  font-size: 0.9rem;
+  color: white;
+  width: fit-content;
+  height: fit-content;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 7px;
+}
+
+.MuiButtonBase-root{
+  align-self: flex-end;
+}
+
+.itemCartFinal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.imgCartFinal{
+  width: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divDataCarrito{
+  text-align: center;
+}

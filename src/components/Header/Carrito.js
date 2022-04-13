@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 //MUI
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import CartContext from '../../Context/CartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Delete } from '@mui/icons-material';
+import ItemCart from '../Main/ItemCart';
 
 const style = {
     position: 'absolute',
@@ -24,7 +25,7 @@ const style = {
 
 export default function Carrito() {
 
-    const {cartProducts} = useContext(CartContext)
+    const {cartProducts, removeItem, clearCart} = useContext(CartContext)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -36,13 +37,12 @@ export default function Carrito() {
         setAnchorEl(null);
     };
 
-    
     return (
         <div className='imgCarrito'>
             <Button onClick={handleClick}
                 size="small"
                 sx={{ ml: 2 }}
-                aria-controls={open ? 'account-menu' : undefined}
+                aria-controls={open ? 'carritoMenu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 >
@@ -83,16 +83,17 @@ export default function Carrito() {
                     {cartProducts.map((cartProduct)=>{
                         const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(cartProduct.precio);
                         return(
-                            <MenuItem onClick={''} className='productosCarrito' key={cartProduct.id}>
+                            <MenuItem className='productosCarrito' key={cartProduct.id}>
                                 <div>
                                     <img className='imgItemsCarrito' src={`img/${cartProduct.imagen}`} alt={cartProduct.nombre}></img>
                                 </div>
                                 <div>
                                     <h4>{cartProduct.nombre}</h4>
-                                    <p>{precioFinal}</p>
+                                    <p>${precioFinal} c/u.</p>
+                                    <p>X{cartProduct.cantidad}</p>
                                 </div>
                                 <div>
-                                    <DeleteIcon/>
+                                    <DeleteIcon onClick={() => removeItem(cartProduct.id)}/>
                                 </div>
                             </MenuItem>
                         )
@@ -100,7 +101,9 @@ export default function Carrito() {
                 </div>
                 <Divider />
                 <MenuItem>
-                    <button>Finalizar Compra</button>
+                    <Link to={'/Cart'}>
+                        <button className='btnFinalizarCarrito' onClick={ItemCart}>Finalizar Compra</button>
+                    </Link>
                 </MenuItem>
             </Menu>
         </div>

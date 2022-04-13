@@ -5,27 +5,39 @@ const CartContext= createContext();
 export const CartProvider = ({children})=>{
 
     const [cartProducts, setCartProducts] = useState([]);
-    const [countItems, setCountItems] = useState(0)
     
-    const addProductToCart = (product, count) =>{
-        if(cartProducts.length === 0){
-            setCartProducts(cartProducts => [...cartProducts, product])
+    const addProductToCart = (product, quantity) =>{
+
+        const findId = cartProducts.findIndex((producto)=>{
+            return producto.id === product.id;
+        })
+
+        if(findId === -1){
+            product.cantidad = quantity;
+            setCartProducts(cartProducts=>[...cartProducts, product]);
         }else{
-            cartProducts.map((cartProduct)=>{
-                if(cartProduct.id !== product.id){
-                    setCartProducts(cartProducts => [...cartProducts, product])
-                }else{
-                    console.log('coinciden')
-                }
-            })
+            if (product.stock < (product.cantidad + quantity)){
+                console.log("Supera el stock actual")
+            }else{
+                cartProducts[findId].cantidad += quantity;
+            }
         }
     }
 
+    const removeItem = (id) => {
+        setCartProducts(cartProducts.filter(p => p.id !== id));
+    }
+    
+    const clearCart = () => {
+        setCartProducts([])
+    }
+    
     const data = {
         cartProducts,
-        addProductToCart
+        addProductToCart,
+        removeItem,
+        clearCart
     }
-
     return(
         <CartContext.Provider value={data}>
             {children}

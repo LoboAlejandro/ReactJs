@@ -7,7 +7,7 @@ export default function ItemCount({count, product ,clase, fontSize, action, term
     const [linkTo, setLinkTo] = useState([]);
     const [terminarCompra, setTerminarCompra] = useState([]);
     const {cartProducts, addProductToCart} = useContext(CartContext);
-    const {id, nombre, precio, imagen, stock} = product;
+    const {id} = product;
     
     const onAdd = () =>{
         if(clase === 'ItemCountDetail'){
@@ -20,7 +20,8 @@ export default function ItemCount({count, product ,clase, fontSize, action, term
                 setTerminarCompra('terminarCompra')
             }
         }else{
-            addProductToCart(product, count)
+            let quantity= count;
+            addProductToCart(product, quantity)
         }
     }
 
