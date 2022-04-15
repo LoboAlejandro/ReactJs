@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext} from 'react';
 import { Link } from 'react-router-dom';
 //MUI
 import Button from '@mui/material/Button';
@@ -11,21 +11,9 @@ import CartContext from '../../Context/CartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ItemCart from '../Main/ItemCart';
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
 export default function Carrito() {
 
-    const {cartProducts, removeItem, clearCart} = useContext(CartContext)
+    const {cartProducts, removeItem, clearCart, cantProdCarrito, carritoTotal} = useContext(CartContext)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -33,6 +21,7 @@ export default function Carrito() {
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
@@ -47,6 +36,16 @@ export default function Carrito() {
                 aria-expanded={open ? 'true' : undefined}
                 >
                 <ShoppingCartIcon className="iconoCarrito" fontSize="large"/>
+                {
+                    !cartProducts.length ? (
+                        <div>
+                        </div>
+                    ):(
+                        <div>
+                            <span className='contadorCarrito'>{cantProdCarrito()}</span>
+                        </div>
+                    )
+                }
             </Button>
             <Menu
                 anchorEl={anchorEl}
@@ -77,27 +76,36 @@ export default function Carrito() {
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 id="carritoMenu"
             >
-                <h3 className='tituloCarrito'>Carrito de compras</h3>
+                <h2 className='tituloCarrito'>Carrito de compras</h2>
                 <Divider />
                 <div className='listaProductosCarrito'>
-                    {cartProducts.map((cartProduct)=>{
-                        const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(cartProduct.precio);
-                        return(
-                            <MenuItem className='productosCarrito' key={cartProduct.id}>
-                                <div>
-                                    <img className='imgItemsCarrito' src={`img/${cartProduct.imagen}`} alt={cartProduct.nombre}></img>
-                                </div>
-                                <div>
-                                    <h4>{cartProduct.nombre}</h4>
-                                    <p>${precioFinal} c/u.</p>
-                                    <p>X{cartProduct.cantidad}</p>
-                                </div>
-                                <div>
-                                    <DeleteIcon onClick={() => removeItem(cartProduct.id)}/>
-                                </div>
-                            </MenuItem>
-                        )
-                    })}
+                {
+                    cartProducts.length ? (
+                    <>
+                        {cartProducts.map((cartProduct)=>{
+                            const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(cartProduct.precio);
+                            return(
+                                <MenuItem className='productosCarrito' key={cartProduct.id}>
+                                    <div>
+                                        <img className='imgItemsCarrito' src={`img/${cartProduct.imagen}`} alt={cartProduct.nombre}></img>
+                                    </div>
+                                    <div>
+                                        <h4>{cartProduct.nombre}</h4>
+                                        <p>${precioFinal} c/u.</p>
+                                        <p>X{cartProduct.cantidad}</p>
+                                    </div>
+                                    <div className='divEliminarProducto'>
+                                        <DeleteIcon onClick={() => removeItem(cartProduct.id)}/>
+                                    </div>
+                                </MenuItem>
+                            )
+                        })}
+                    </>
+
+                    ):(
+                        <h3>No hay productos agregados al carrito...</h3>
+                    )
+                }
                 </div>
                 <Divider />
                 <MenuItem>

@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 const CartContext= createContext();
 
@@ -28,16 +28,35 @@ export const CartProvider = ({children})=>{
         setCartProducts(cartProducts.filter(p => p.id !== id));
     }
     
-    const clearCart = () => {
+    const limpiarCarrito = () => {
         setCartProducts([])
     }
-    
+
+    const cantProdCarrito = () => {
+        let cantidad = 0;
+        cartProducts.map((product)=>{
+            cantidad += product.cantidad;
+        })
+        return cantidad
+    }
+
+    const carritoTotal = () => {
+        let total = 0;
+        cartProducts.map((product)=>{
+            total = total + product.price*product.cantidad;
+        });
+        return total
+    }
+
     const data = {
         cartProducts,
         addProductToCart,
         removeItem,
-        clearCart
+        limpiarCarrito,
+        cantProdCarrito,
+        carritoTotal,
     }
+
     return(
         <CartContext.Provider value={data}>
             {children}

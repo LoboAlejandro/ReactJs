@@ -57,10 +57,30 @@
   align-items: center;
   width: 3rem;
   justify-content: center;
+  position: relative;
 }
 
 .ItemCountItem-iconoCarrito, .iconoCarrito{
   color: white;
+}
+
+.contadorCarrito{
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  padding: 0.3rem;
+  background-color: red;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 13px;
+  bottom: -0.5rem;
+  right: 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+
+
 }
 
 .itemList{
@@ -296,12 +316,12 @@
   cursor: pointer;
 }
 
-.divCargandoError{
+.divCargando{
   margin-top: 10rem;
 }
 
-.msjError{
-  color: red;
+.msjCargando{
+  margin-top: 1rem;
 }
 
 #carritoMenu{
@@ -316,12 +336,12 @@
 
 #carritoMenu li:hover{
   cursor: default;
-  background-color: transparent;
 }
 
 .listaProductosCarrito{
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
 }
 
 .listaProductosCarrito li{
@@ -388,8 +408,23 @@
 }
 
 .divBotoneraCarrito{
-
   display: flex;
   flex-direction: row;
   justify-content: end;
+}
+
+.divEliminarProducto{
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 22px;
+  padding: 0.2rem;
+  box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.66);
+}
+
+.divEliminarProducto:hover{
+  box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.66) inset;
+  cursor: pointer;
 }

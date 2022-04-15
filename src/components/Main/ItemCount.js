@@ -6,7 +6,7 @@ import CartContext from '../../Context/CartContext';
 export default function ItemCount({count, product ,clase, fontSize, action, terminarCompras}){
     const [linkTo, setLinkTo] = useState([]);
     const [terminarCompra, setTerminarCompra] = useState([]);
-    const {cartProducts, addProductToCart} = useContext(CartContext);
+    const {addProductToCart} = useContext(CartContext);
     const {id} = product;
     
     const onAdd = () =>{

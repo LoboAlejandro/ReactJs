@@ -2,16 +2,18 @@ import React, {useState, useEffect} from 'react';
 import { dataProducts } from '../../data/data';
 import { Item } from './Item';
 import { useParams } from 'react-router-dom';
+import { CircularProgress } from '@mui/material';
     
 export default function ItemList(){
     
     const { category } = useParams();
     
-    let prueba= 'CARGANDO ITEM';
+    const [loading, setLoading]= useState(true);
     const [products, setProducts]= useState([]);
     
     const getProducts= new Promise((resolve, reject)=>{
         return setTimeout(()=>{
+            setLoading(false);
             return resolve(dataProducts);
         }, 2000)
     })
@@ -30,45 +32,24 @@ export default function ItemList(){
     }, [category])
     
     const filterProductByCategory = (productos , category) => {
-        prueba= 'error';
         productos.map( (producto) => {
             if(producto.category === category) {
                 setProducts(products => [...products, producto]);
-                prueba= 'Correcto';
             }
         })
     }
     
-    useEffect(()=>{
-        const msjError= document.querySelector('.msjError');
-        const msjCargando= document.querySelector('.msjCargando');
-        msjError.style.visibility= 'hidden';
-        setTimeout(()=>{
-            if(prueba === 'error'){
-                msjCargando.style.visibility= 'hidden';
-                msjError.style.visibility= 'visible';
-            }else{
-            }
-        }, 2000)
-    }, [prueba])
-    
     return(
         <div className='itemList'>
-            {products.length ? (
-                <>{
-                    products.map((product) => {
-                        return (
-                            <div key={product.id}>
-                                <Item product={product}/>
-                            </div>
-                        );
-                    })
-                }</>
-            ) : (
-                <div className='divCargandoError'>
+            {loading ? (
+                <div className='divCargando'>
+                    <CircularProgress/>
                     <h2 className='msjCargando'>Cargando productos...</h2>
-                    <h2 className='msjError'>ERROR: La categoria ingresada no existe</h2>
                 </div>
+            ) : (
+                <>
+                    {products.map((product) => <Item key={product.id} product={product}/>)}
+                </>
             )}
         </div>
     );
