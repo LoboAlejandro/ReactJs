@@ -44,24 +44,25 @@ export default function ItemDetail({producto}) {
     }, 10)
     
     
-    const getProducts= new Promise((resolve, reject)=>{
-        return resolve(producto);
-        // return setTimeout(()=>{
-        // }, 2000)
-    })
+    // const getProducts= new Promise((resolve, reject)=>{
+    //     return resolve(producto);
+    //     // return setTimeout(()=>{
+    //     // }, 2000)
+    // })
     
-    async function getProductsAsync(){
-        try{
-            const productos= await getProducts;
-            setProducts(productos);
-        }catch(error){
-            console.log('error', error);
-        }
-    }
+    // async function getProductsAsync(){
+    //     try{
+    //         const productos= await getProducts;
+    //         setProducts(productos);
+    //     }catch(error){
+    //         console.log('error', error);
+    //     }
+    // }
     
     useEffect(()=>{
         setTerminarCompras('Comprar');
-        getProductsAsync();
+        // getProductsAsync();
+        setProducts(producto)
     },[])
 
     const [count, setCount]= useState(initial);

@@ -24,7 +24,7 @@ function App() {
             <Route path='/nosotros' element={<InConstructionPage/>}/>
             <Route path='/contacto' element={<InConstructionPage/>}/>
             <Route path='/producto/:id' element={<DetailPage/>}/>
-            <Route path="/:category" element={<HomePage/>}/>
+            <Route path="/productos/:category" element={<HomePage/>}/>
             <Route path='/cart' element={<CartPage/>}/>
             <Route path="*" element={<NotFoundPage/>}/>
           </Routes>
