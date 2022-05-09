@@ -54,11 +54,6 @@ export default function ItemCart(){
         setOpen(false);
     };
 
-    // const transformNum= (num) =>{
-    //     const precioPesos= Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(num)
-    //     return precioPesos;
-    // }
-
     const [order, setOrder] = useState({
         buyer: formData,
         items: cartProducts.map( (cartProduct) =>{

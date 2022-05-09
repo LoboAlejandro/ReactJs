@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
+import CartContext from '../../Context/CartContext';
 import ItemCount from './ItemCount';
 
 export default function ItemDetail({producto}) {
     const [products, setProducts]= useState([{}]);
     const [terminarCompras, setTerminarCompras]= useState([]);
     const {id, nombre, precio, imagen, fabricante, memoriaGrafica, interfazPM, tamañoMemoria, conectividad, descripcion, stock} = producto;
-    
+    const {transformNum} = useContext(CartContext);
+
     let initial= 0;
 
     if(stock === 0){
@@ -28,7 +30,6 @@ export default function ItemDetail({producto}) {
     
     setTimeout(()=>{
         const stockHide= document.querySelector(`.stock--${id}`);
-        
         if(stock < 10){
             if(stock > 1){
                 stockHide.textContent= `Quedan las últimas ${stock} unidades`;
@@ -38,8 +39,6 @@ export default function ItemDetail({producto}) {
             if(stock === 0){
                 stockHide.textContent= 'SIN STOCK';
             }
-        }else{
-            stockHide.style.visibility= 'hidden';
         }
     }, 10)
     
@@ -49,7 +48,6 @@ export default function ItemDetail({producto}) {
     },[])
 
     const [count, setCount]= useState(initial);
-    
 
     const ItemCountDelete= () =>{
         if(terminarCompras === 'Comprar'){
@@ -59,40 +57,48 @@ export default function ItemDetail({producto}) {
         }
     }
 
-    const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(precio);
-    
     return(
         <article className="productDetail">
-            {products.length ? (<h2>Cargando item...</h2>)
-                : (<>
-                    <div className='productData'>
-                        <div className='divImagenDetail'>
-                            <img src={`../img/${imagen}`} alt= {nombre} className='imagenProductosDetail'></img>
+            {products.length ? 
+                (
+                    <h2>Cargando item...</h2>
+                ) : (
+                    <>
+                        <div className='productData'>
+                            <div className='divImagenDetail'>
+                                <img src={`../img/${imagen}`} alt= {nombre} className='imagenProductosDetail'></img>
+                            </div>
+                            <div>
+                                <p className="descripcion">{descripcion}</p>
+                            </div>
                         </div>
-                        <div>
-                            <p className="descripcion">{descripcion}</p>
+                        <div className="productInfo">
+                            <h2 className="nombre">{nombre}</h2>
+                            <h3>Precio: ${transformNum(precio)}</h3>
+                            <p className='seleccionarCant'>Seleccione cantidad:</p>
+                            <div className='divBotoneraDetail'>
+                                <button className={`btnSumaRestaDetail`} onClick={restarItem}>-</button>
+                                <h3>{count}</h3>
+                                <button className={`btnSumaRestaDetail`} onClick={sumarItem}>+</button>
+                            </div>
+                            <ItemCount count={count} product={producto} clase='ItemCountDetail' fontSize="large" terminarCompras={terminarCompras} action={ItemCountDelete}/>
+                            {stock > 10 ? 
+                                (
+                                    <p></p>
+                                ) : (
+                                    <p className={`stock--${id}`}></p>
+                                )
+                            }
+                            <div className='dataDetail'>
+                                <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
+                                <p className='dataW'>Memoria Gráfica: <b>{memoriaGrafica}</b></p>
+                                <p className='dataG'>Interfaz de comunicación con placa madre: <b>{interfazPM}</b></p>
+                                <p className='dataW'>Tamaño de memoria: <b>{tamañoMemoria}</b></p>
+                                <p className='dataG'>Conectividad de puertos: <b>{conectividad}</b></p>
+                            </div>
                         </div>
-                    </div>
-                    <div className="productInfo">
-                        <h2 className="nombre">{nombre}</h2>
-                        <h3>Precio: ${precioFinal}</h3>
-                        <p className='seleccionarCant'>Seleccione cantidad:</p>
-                        <div className='divBotoneraDetail'>
-                            <button className={`btnSumaRestaDetail`} onClick={restarItem}>-</button>
-                            <h3>{count}</h3>
-                            <button className={`btnSumaRestaDetail`} onClick={sumarItem}>+</button>
-                        </div>
-                        <ItemCount count={count} product={producto} clase='ItemCountDetail' fontSize="large" terminarCompras={terminarCompras} action={ItemCountDelete}/>
-                        <p className={`stock--${id}`}></p>
-                        <div className='dataDetail'>
-                            <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
-                            <p className='dataW'>Memoria Gráfica: <b>{memoriaGrafica}</b></p>
-                            <p className='dataG'>Interfaz de comunicación con placa madre: <b>{interfazPM}</b></p>
-                            <p className='dataW'>Tamaño de memoria: <b>{tamañoMemoria}</b></p>
-                            <p className='dataG'>Conectividad de puertos: <b>{conectividad}</b></p>
-                        </div>
-                    </div>
-                </>)
+                    </>
+                )
             }
         </article>
     );

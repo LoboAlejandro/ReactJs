@@ -40,11 +40,8 @@ export const Item = ({product})=>{
             if(stock === 0){
                 stockHide.textContent= 'SIN STOCK';
             }
-        }else{
-            stockHide.style.visibility= 'hidden';
         }
     }, 10)
-
 
     return(
         <div className='cardItem'>
@@ -61,7 +58,13 @@ export const Item = ({product})=>{
                 <button className={`btnSumaResta`} onClick={sumarItem}>+</button>
             </div>
             <ItemCount count={count} product={product} clase="ItemCountItem" fontSize='small'/>
-            <p className={`stock stock-${id}`}></p>
+            {stock > 10 ? 
+                (
+                    <p></p>
+                    ) : (
+                    <p className={`stock stock-${id}`}></p>
+                )
+            }
         </div>
     )
 }
