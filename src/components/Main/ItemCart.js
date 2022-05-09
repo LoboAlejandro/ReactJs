@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import { Link } from "react-router-dom";
-
+//Context
 import CartContext from "../../Context/CartContext";
 //MUI
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -23,7 +23,6 @@ export default function ItemCart(){
         phone: '',
         email: ''
     })
-
     const [successOrder, setSuccessOrder]= useState()
     
     const handleSubmit= (e) =>{

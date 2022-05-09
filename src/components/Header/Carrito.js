@@ -1,19 +1,19 @@
 import * as React from 'react';
 import { useContext} from 'react';
 import { Link } from 'react-router-dom';
+import ItemCart from '../Main/ItemCart';
+//Context
+import CartContext from '../../Context/CartContext';
+//Mui
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
-import CartContext from '../../Context/CartContext';
 import DeleteIcon from '@mui/icons-material/Delete';
-import ItemCart from '../Main/ItemCart';
 
 export default function Carrito() {
-
     const {cartProducts, removeItem, cantProdCarrito, carritoTotal, transformNum} = useContext(CartContext)
-
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
 
@@ -74,12 +74,11 @@ export default function Carrito() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                 id="carritoMenu"
-            >
+                >
                 <h2 className='tituloCarrito'>Carrito de compras</h2>
                 <Divider />
                 <div className='listaProductosCarrito'>
-                {
-                    cartProducts.length ? (
+                {cartProducts.length ? (
                     <>
                         {cartProducts.map((cartProduct)=>{
                             return(

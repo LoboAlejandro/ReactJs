@@ -1,13 +1,13 @@
 import React, {useState, useContext} from 'react'
-import CartContext from '../../Context/CartContext';
 import ItemCount from './ItemCount';
+//Context
+import CartContext from '../../Context/CartContext';
 
 export const Item = ({product})=>{
     const {id, nombre, precio, imagen, stock} = product;
     const {transformNum} = useContext(CartContext)
 
     let initial= 1;
-
     if(stock === 0){
         initial= 0;
     }else{
@@ -30,7 +30,6 @@ export const Item = ({product})=>{
     
     setTimeout(()=>{
         const stockHide= document.querySelector(`.stock-${id}`);
-
         if(stock < 10){
             if(stock > 1){
                 stockHide.textContent= `Quedan las últimas ${stock} unidades`;

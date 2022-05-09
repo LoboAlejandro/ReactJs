@@ -1,17 +1,14 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState} from "react";
 
 const CartContext= createContext();
 
 export const CartProvider = ({children})=>{
-
     const [cartProducts, setCartProducts] = useState([]);
     
     const addProductToCart = (product, quantity) =>{
-
         const findId = cartProducts.findIndex((producto)=>{
             return producto.id === product.id;
         })
-
         if(findId === -1){
             product.cantidad = quantity;
             setCartProducts(cartProducts=>[...cartProducts, product]);

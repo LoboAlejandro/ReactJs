@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext} from 'react';
-import CartContext from '../../Context/CartContext';
 import ItemCount from './ItemCount';
+//Context
+import CartContext from '../../Context/CartContext';
 
 export default function ItemDetail({producto}) {
     const [products, setProducts]= useState([{}]);
@@ -9,7 +10,6 @@ export default function ItemDetail({producto}) {
     const {transformNum} = useContext(CartContext);
 
     let initial= 0;
-
     if(stock === 0){
         initial= 0;
     }else{

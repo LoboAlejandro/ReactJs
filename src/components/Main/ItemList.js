@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import { Item } from './Item';
 import { useParams } from 'react-router-dom';
+//Mui
 import { CircularProgress } from '@mui/material';
+//Firebase
 import db from '../../firebaseConfig'
 import { collection, getDocs } from 'firebase/firestore';
-    
+
 export default function ItemList(){
-    
     const { category } = useParams();
-    
     const [loading, setLoading]= useState(true);
     const [products, setProducts]= useState([]);
-    
+
     const getProducts= async () =>{
         const itemsCollection= collection(db, 'productos')
         const productosSnapshot = await getDocs(itemsCollection)
@@ -22,15 +22,16 @@ export default function ItemList(){
         })
         return productList;
     }
-        useEffect(()=>{
-            setProducts([]);
-            setLoading(true)
-            getProducts().then((productos) => {
-                setLoading(false)
-                category ? filterProductByCategory(productos, category) : setProducts(productos);
-            })
+
+    useEffect(()=>{
+        setProducts([]);
+        setLoading(true)
+        getProducts().then((productos) => {
+            setLoading(false)
+            category ? filterProductByCategory(productos, category) : setProducts(productos);
+        })
     }, [category])
-    
+
     const filterProductByCategory = (productos , category) => {
         productos.map( (producto) => {
             if(producto.category === category) {
@@ -38,7 +39,7 @@ export default function ItemList(){
             }
         })
     }
-    
+
     return(
         <div className='itemList'>
             {loading ? (

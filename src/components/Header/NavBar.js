@@ -1,7 +1,8 @@
 import React from 'react';
-import Button from '@mui/material/Button';
 import Carrito from './Carrito';
 import {Link} from 'react-router-dom'
+//Mui
+import Button from '@mui/material/Button';
 
 function NavBar(){
     return(

@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-//components
+//Components
 import NavBar from './components/Header/NavBar';
-//pages
+//Pages
 import HomePage from './pages/Home';
 import DetailPage from './pages/Detail';
 import NotFoundPage from './pages/NotFound';
 import InConstructionPage from './pages/InConstruction';
 import CartPage from './pages/Cart';
-//context
+//Context
 import {CartProvider} from './Context/CartContext';
 
 function App() {

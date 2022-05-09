@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+//Context
 import CartContext from '../../Context/CartContext';
+//Mui
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function ItemCount({count, product ,clase, fontSize, action, terminarCompras}){
     const [linkTo, setLinkTo] = useState([]);
