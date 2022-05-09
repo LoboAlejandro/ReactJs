@@ -371,6 +371,12 @@
   padding: 0.5rem;
   border: none;
   border-radius: 7px;
+  align-self: flex-end;
+}
+
+.btnFinalizarCarrito:hover{
+  cursor: pointer;
+  background-color: #3636c4;
 }
 
 .MuiButtonBase-root{
@@ -427,4 +433,12 @@
 .divEliminarProducto:hover{
   box-shadow: 0px 0px 10px -5px rgba(0,0,0,0.66) inset;
   cursor: pointer;
+}
+
+.botoneraCarrito{
+  width: 100%;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end !important;
 }

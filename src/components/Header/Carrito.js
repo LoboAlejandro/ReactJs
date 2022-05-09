@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useContext} from 'react';
 import { Link } from 'react-router-dom';
-//MUI
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
@@ -13,7 +12,7 @@ import ItemCart from '../Main/ItemCart';
 
 export default function Carrito() {
 
-    const {cartProducts, removeItem, clearCart, cantProdCarrito, carritoTotal} = useContext(CartContext)
+    const {cartProducts, removeItem, cantProdCarrito, carritoTotal, transformNum} = useContext(CartContext)
 
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
@@ -83,7 +82,6 @@ export default function Carrito() {
                     cartProducts.length ? (
                     <>
                         {cartProducts.map((cartProduct)=>{
-                            const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(cartProduct.precio);
                             return(
                                 <MenuItem className='productosCarrito' key={cartProduct.id}>
                                     <div>
@@ -91,7 +89,7 @@ export default function Carrito() {
                                     </div>
                                     <div>
                                         <h4>{cartProduct.nombre}</h4>
-                                        <p>${precioFinal} c/u.</p>
+                                        <p>${transformNum(cartProduct.precio)} c/u.</p>
                                         <p>X{cartProduct.cantidad}</p>
                                     </div>
                                     <div className='divEliminarProducto'>
@@ -101,17 +99,29 @@ export default function Carrito() {
                             )
                         })}
                     </>
-
                     ):(
                         <h3>No hay productos agregados al carrito...</h3>
                     )
                 }
                 </div>
                 <Divider />
-                <MenuItem>
-                    <Link to={'/Cart'}>
-                        <button className='btnFinalizarCarrito' onClick={ItemCart}>Finalizar Compra</button>
-                    </Link>
+                <MenuItem className='botoneraCarrito'>
+                    {
+                        cartProducts.length ? (
+                            <>
+                                <h2>TOTAL: ${transformNum(carritoTotal())}</h2>
+                                <Link to={'/Cart'}>
+                                    <button className='btnFinalizarCarrito' onClick={ItemCart}>Finalizar Compra</button>
+                                </Link>
+                            </>
+                        ) : (
+                            <>
+                                <Link to={'/'}>
+                                    <button className='btnFinalizarCarrito'>Seguir Comprando</button>
+                                </Link>
+                            </>
+                        )
+                    }
                 </MenuItem>
             </Menu>
         </div>

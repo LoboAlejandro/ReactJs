@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const CartContext= createContext();
 
@@ -24,6 +24,11 @@ export const CartProvider = ({children})=>{
         }
     }
 
+    const transformNum= (num) =>{
+        const precioPesos= Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(num)
+        return precioPesos;
+    }
+
     const removeItem = (id) => {
         setCartProducts(cartProducts.filter(p => p.id !== id));
     }
@@ -37,15 +42,25 @@ export const CartProvider = ({children})=>{
         cartProducts.map((product)=>{
             cantidad += product.cantidad;
         })
-        return cantidad
+        return cantidad;
+    }
+
+    const precioFinalTotal = () =>{
+        let precio= 0;
+        let precioSuma = 0;
+        cartProducts.map((product)=>{
+            precioSuma= product.precio * product.cantidad;
+            precio += precioSuma;
+        })
+        return precio;
     }
 
     const carritoTotal = () => {
         let total = 0;
         cartProducts.map((product)=>{
-            total = total + product.price*product.cantidad;
+            total = total + product.precio * product.cantidad;
         });
-        return total
+        return total;
     }
 
     const data = {
@@ -55,6 +70,8 @@ export const CartProvider = ({children})=>{
         limpiarCarrito,
         cantProdCarrito,
         carritoTotal,
+        precioFinalTotal,
+        transformNum
     }
 
     return(

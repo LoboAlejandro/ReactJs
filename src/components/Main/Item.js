@@ -1,12 +1,11 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
+import CartContext from '../../Context/CartContext';
 import ItemCount from './ItemCount';
-// import CartContext from '../../Context/CartContext';
 
 export const Item = ({product})=>{
-
-    // const {cartProducts, addProductToCart} = useContext(CartContext);
-
     const {id, nombre, precio, imagen, stock} = product;
+    const {transformNum} = useContext(CartContext)
+
     let initial= 1;
 
     if(stock === 0){
@@ -46,8 +45,7 @@ export const Item = ({product})=>{
         }
     }, 10)
 
-    const precioFinal = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'ARS' }).format(precio);
-    
+
     return(
         <div className='cardItem'>
             <div className="divImagen">
@@ -55,7 +53,7 @@ export const Item = ({product})=>{
             </div>
             <div className='divData'>
                 <h2 className='divData__h2'>{nombre}</h2>
-                <h3 className='divData__h3'>Precio: ${precioFinal}</h3>
+                <h3 className='divData__h3'>Precio: ${transformNum(precio)}</h3>
             </div>
             <div className='divBotonera'>
                 <button className={`btnSumaResta`} onClick={restarItem}>-</button>
