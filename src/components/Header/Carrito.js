@@ -84,7 +84,7 @@ export default function Carrito() {
                             return(
                                 <MenuItem className='productosCarrito' key={cartProduct.id}>
                                     <div>
-                                        <img className='imgItemsCarrito' src={`img/${cartProduct.imagen}`} alt={cartProduct.nombre}></img>
+                                        <img className='imgItemsCarrito' src={`../img/${cartProduct.imagen}`} alt={cartProduct.nombre}></img>
                                     </div>
                                     <div>
                                         <h4>{cartProduct.nombre}</h4>
@@ -108,7 +108,7 @@ export default function Carrito() {
                     {
                         cartProducts.length ? (
                             <>
-                                <h2>TOTAL: ${transformNum(carritoTotal())}</h2>
+                                <h2>Subtotal: ${transformNum(carritoTotal())}</h2>
                                 <Link to={'/Cart'}>
                                     <button className='btnFinalizarCarrito' onClick={ItemCart}>Finalizar Compra</button>
                                 </Link>

@@ -37,6 +37,7 @@ export default function ItemList(){
             if(producto.category === category) {
                 setProducts(products => [...products, producto]);
             }
+            return producto;
         })
     }
 

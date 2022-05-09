@@ -118,6 +118,7 @@
 
 .divData__h3{
   margin: 0;
+  color: #6c7076;
 }
 
 .divBotonera{
@@ -142,6 +143,12 @@
 .btnSumaResta:hover{
   background-color: #6565dd;
   cursor: pointer;
+}
+
+.btnSumaResta:disabled{
+  background-color: #bdbdbd;
+  color: black;
+  cursor: default;
 }
 
 .ItemCountItem-btnsCard{
@@ -285,6 +292,17 @@
   color: white;
   width: 3rem;
   height: 3rem;
+}
+
+.btnSumaRestaDetail:hover{
+  background-color: #6565dd;
+  cursor: pointer;
+}
+
+.btnSumaRestaDetail:disabled{
+  background-color: #bdbdbd;
+  color: black;
+  cursor: default;
 }
 
 .descripcion{

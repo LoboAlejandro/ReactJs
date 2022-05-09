@@ -74,12 +74,35 @@ export default function ItemDetail({producto}) {
                         </div>
                         <div className="productInfo">
                             <h2 className="nombre">{nombre}</h2>
-                            <h3>Precio: ${transformNum(precio)}</h3>
+                            <h3>${transformNum(precio)}</h3>
                             <p className='seleccionarCant'>Seleccione cantidad:</p>
                             <div className='divBotoneraDetail'>
-                                <button className={`btnSumaRestaDetail`} onClick={restarItem}>-</button>
-                                <h3>{count}</h3>
-                                <button className={`btnSumaRestaDetail`} onClick={sumarItem}>+</button>
+                                {stock===0?
+                                    (
+                                        <>
+                                            <button className={`btnSumaRestaDetail`} disabled>-</button>
+                                            <h3>0</h3>
+                                            <button className={`btnSumaRestaDetail`} disabled>+</button>
+                                        </>
+                                    ):(
+                                        <>
+                                            {count === 0?
+                                                (
+                                                    <button className={`btnSumaRestaDetail`} disabled>-</button>
+                                                ):(
+                                                    <button className={`btnSumaRestaDetail`} onClick={restarItem}>-</button>
+                                                )
+                                            }
+                                            <h3>{count}</h3>
+                                            {stock === count || count >= 9?
+                                            (
+                                                <button className={`btnSumaRestaDetail`} disabled>+</button>
+                                            ):(
+                                                <button className={`btnSumaRestaDetail`} onClick={sumarItem}>+</button>
+                                            )}
+                                        </>
+                                    )
+                                }
                             </div>
                             <ItemCount count={count} product={producto} clase='ItemCountDetail' fontSize="large" terminarCompras={terminarCompras} action={ItemCountDelete}/>
                             {stock > 10 ? 

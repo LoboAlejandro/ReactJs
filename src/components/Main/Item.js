@@ -45,16 +45,39 @@ export const Item = ({product})=>{
     return(
         <div className='cardItem'>
             <div className="divImagen">
-                <img src={`img/${imagen}`} alt={nombre} className='imagenProductos'></img>
+                <img src={`../img/${imagen}`} alt={nombre} className='imagenProductos'></img>
             </div>
             <div className='divData'>
                 <h2 className='divData__h2'>{nombre}</h2>
-                <h3 className='divData__h3'>Precio: ${transformNum(precio)}</h3>
+                <h3 className='divData__h3'>${transformNum(precio)}</h3>
             </div>
             <div className='divBotonera'>
-                <button className={`btnSumaResta`} onClick={restarItem}>-</button>
-                <h3>{count}</h3>
-                <button className={`btnSumaResta`} onClick={sumarItem}>+</button>
+                {stock===0?
+                    (
+                        <>
+                            <button className={`btnSumaResta`} disabled>-</button>
+                            <h3>0</h3>
+                            <button className={`btnSumaResta`} disabled>+</button>
+                        </>
+                    ):(
+                        <>
+                            {count === 0?
+                                (
+                                    <button className={`btnSumaResta`} disabled>-</button>
+                                ):(
+                                    <button className={`btnSumaResta`} onClick={restarItem}>-</button>
+                                )
+                            }
+                            <h3>{count}</h3>
+                            {stock === count || count >= 9?
+                            (
+                                <button className={`btnSumaResta`} disabled>+</button>
+                            ):(
+                                <button className={`btnSumaResta`} onClick={sumarItem}>+</button>
+                            )}
+                        </>
+                    )
+                }
             </div>
             <ItemCount count={count} product={product} clase="ItemCountItem" fontSize='small'/>
             {stock > 10 ? 
