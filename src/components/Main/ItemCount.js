@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
 //Context
 import CartContext from '../../Context/CartContext';
@@ -28,7 +28,7 @@ export default function ItemCount({count, product ,clase, fontSize, action, term
             addProductToCart(product, quantity);
         }
     }
-    
+
     return(
         <div className={`${clase}-btnsCard`}>
             <Link to={`/producto/${id}`}>

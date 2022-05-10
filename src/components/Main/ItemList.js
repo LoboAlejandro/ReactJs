@@ -11,7 +11,6 @@ export default function ItemList(){
     const { category } = useParams();
     const [loading, setLoading]= useState(true);
     const [products, setProducts]= useState([]);
-
     const getProducts= async () =>{
         const itemsCollection= collection(db, 'productos')
         const productosSnapshot = await getDocs(itemsCollection)
@@ -34,9 +33,11 @@ export default function ItemList(){
 
     const filterProductByCategory = (productos , category) => {
         productos.map( (producto) => {
-            if(producto.category === category) {
-                setProducts(products => [...products, producto]);
-            }
+            producto.category.map((product)=>{
+                if(product === category) {
+                    setProducts(products => [...products, producto]);
+                }
+            })
             return producto;
         })
     }

@@ -6,7 +6,7 @@ import CartContext from '../../Context/CartContext';
 export default function ItemDetail({producto}) {
     const [products, setProducts]= useState([{}]);
     const [terminarCompras, setTerminarCompras]= useState([]);
-    const {id, nombre, precio, imagen, fabricante, memoriaGrafica, interfazPM, tamañoMemoria, conectividad, descripcion, stock} = producto;
+    const {id, nombre, precio, imagen, fabricante, memoriaGrafica, interfazPM, tamañoMemoria, conectividad, descripcion, stock, compatibleRAM, nucleosCPU, compatibleZocalo, frecuenciaMax} = producto;
     const {transformNum} = useContext(CartContext);
 
     let initial= 0;
@@ -74,7 +74,7 @@ export default function ItemDetail({producto}) {
                         </div>
                         <div className="productInfo">
                             <h2 className="nombre">{nombre}</h2>
-                            <h3>${transformNum(precio)}</h3>
+                            <h3 className='divData__h3'>${transformNum(precio)}</h3>
                             <p className='seleccionarCant'>Seleccione cantidad:</p>
                             <div className='divBotoneraDetail'>
                                 {stock===0?
@@ -112,13 +112,30 @@ export default function ItemDetail({producto}) {
                                     <p className={`stock--${id}`}></p>
                                 )
                             }
-                            <div className='dataDetail'>
-                                <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
-                                <p className='dataW'>Memoria Gráfica: <b>{memoriaGrafica}</b></p>
-                                <p className='dataG'>Interfaz de comunicación con placa madre: <b>{interfazPM}</b></p>
-                                <p className='dataW'>Tamaño de memoria: <b>{tamañoMemoria}</b></p>
-                                <p className='dataG'>Conectividad de puertos: <b>{conectividad}</b></p>
-                            </div>
+                            {producto.category.map((product)=>{
+                                if(product === 'placaDeVideo'){
+                                    return(
+                                        <div className='dataDetail' key={`${id}A`}>
+                                            <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
+                                            <p className='dataW'>Memoria Gráfica: <b>{memoriaGrafica}</b></p>
+                                            <p className='dataG'>Interfaz de comunicación con placa madre: <b>{interfazPM}</b></p>
+                                            <p className='dataW'>Tamaño de memoria: <b>{tamañoMemoria}</b></p>
+                                            <p className='dataG'>Conectividad de puertos: <b>{conectividad}</b></p>
+                                        </div>
+                                    )
+                                }
+                                if(product === 'procesador'){
+                                    return(
+                                        <div className='dataDetail' key={`${id}B`}>
+                                            <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
+                                            <p className='dataW'>Memoria RAM soportada: <b>{compatibleRAM}</b></p>
+                                            <p className='dataG'>Cantidad de núcleos de CPU: <b>{nucleosCPU}</b></p>
+                                            <p className='dataW'>Zócalos compatibles: <b>{compatibleZocalo}</b></p>
+                                            <p className='dataG'>Frecuencia máxima de CPU: <b>{frecuenciaMax}</b></p>
+                                        </div>
+                                    )
+                                }
+                            })}
                         </div>
                     </>
                 )

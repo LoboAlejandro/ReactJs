@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext } from 'react'
 import ItemCount from './ItemCount';
 //Context
 import CartContext from '../../Context/CartContext';
@@ -52,7 +52,7 @@ export const Item = ({product})=>{
                 <h3 className='divData__h3'>${transformNum(precio)}</h3>
             </div>
             <div className='divBotonera'>
-                {stock===0?
+                {stock === 0?
                     (
                         <>
                             <button className={`btnSumaResta`} disabled>-</button>
