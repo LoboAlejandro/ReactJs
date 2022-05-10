@@ -1,4 +1,5 @@
 import React, {useContext, useState} from "react";
+import './ItemCart.css'
 import { Link } from "react-router-dom";
 //Context
 import CartContext from "../../Context/CartContext";
@@ -117,11 +118,15 @@ export default function ItemCart(){
                     )
                 }
                 <div className="divBotoneraCarrito">
-                    <Link to={'/'}>
-                        <button>Seguir Comprando</button>
-                    </Link>
-                    <button onClick={limpiarCarrito}>Vaciar Carrito</button>
-                    <button onClick={handleClickOpen}>Comprar Carrito</button>
+                    <div className="divBotonesCarrito">
+                        <Link to={'/'}>
+                            <Button variant='contained'>Seguir Comprando</Button>
+                        </Link>
+                        <div className="divBotonesCarritoLimpiarComprar">
+                            <Button onClick={limpiarCarrito} variant='outlined'>Vaciar Carrito</Button>
+                            <Button onClick={handleClickOpen} variant='contained' color='success'>Comprar Carrito</Button>
+                        </div>
+                    </div>
                     {successOrder ? (
                         <Dialog open={open} onClose={handleClose}>
                             <DialogTitle>Compra realizada</DialogTitle>
@@ -190,8 +195,8 @@ export default function ItemCart(){
                                         value={formData.email}
                                     />
                                     <DialogActions>
-                                        <Button onClick={handleClose}>Cancel</Button>
-                                        <Button type='submit'>Subscribe</Button>
+                                        <Button onClick={handleClose}>Cancelar</Button>
+                                        <Button type='submit' variant="contained">Confirmar Compra</Button>
                                     </DialogActions>
                                 </form>
                             </DialogContent>

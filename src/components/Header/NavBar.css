@@ -1,0 +1,71 @@
+.imagen-logo {
+    height: 5rem;
+    pointer-events: none;
+    margin-top: 0.2rem;
+}
+
+.logoDiv{
+    display: flex;
+    align-items: center;
+}
+
+.App-header {
+    background-color: #282c34;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    padding: 0 1rem;
+}
+
+.navbar{
+    display: flex;
+    direction: row;
+    list-style: none;
+    align-items: center;
+}
+
+.navbar li button{
+    margin: 0.6rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.navbar li button:hover{
+    background-color: #373e49;
+    cursor: pointer;
+}
+
+.linkHeader{
+    text-decoration: none;
+}
+
+.imgCarrito{
+    display: flex;
+    align-items: center;
+    width: 3rem;
+    justify-content: center;
+    position: relative;
+}
+
+.ItemCountItem-iconoCarrito, .iconoCarrito{
+    color: white;
+}
+
+.contadorCarrito{
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    padding: 0.3rem;
+    background-color: red;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    bottom: -0.5rem;
+    right: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+}

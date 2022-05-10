@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Carrito.css';
 import { useContext} from 'react';
 import { Link } from 'react-router-dom';
 import ItemCart from '../Main/ItemCart';

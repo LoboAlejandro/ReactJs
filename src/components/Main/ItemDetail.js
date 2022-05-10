@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext} from 'react';
+import './ItemDetail.css'
 import ItemCount from './ItemCount';
 //Context
 import CartContext from '../../Context/CartContext';
@@ -6,7 +7,7 @@ import CartContext from '../../Context/CartContext';
 export default function ItemDetail({producto}) {
     const [products, setProducts]= useState([{}]);
     const [terminarCompras, setTerminarCompras]= useState([]);
-    const {id, nombre, precio, imagen, fabricante, memoriaGrafica, interfazPM, tamañoMemoria, conectividad, descripcion, stock, compatibleRAM, nucleosCPU, compatibleZocalo, frecuenciaMax} = producto;
+    const {id, nombre, precio, imagen, fabricante, memoriaGrafica, interfazPM, tamañoMemoria, conectividad, descripcion, stock, compatibleRAM, nucleosCPU, compatibleZocalo, frecuenciaMax, memoriaMax, chipset, ranuraExp, plataforma} = producto;
     const {transformNum} = useContext(CartContext);
 
     let initial= 0;
@@ -132,6 +133,19 @@ export default function ItemDetail({producto}) {
                                             <p className='dataG'>Cantidad de núcleos de CPU: <b>{nucleosCPU}</b></p>
                                             <p className='dataW'>Zócalos compatibles: <b>{compatibleZocalo}</b></p>
                                             <p className='dataG'>Frecuencia máxima de CPU: <b>{frecuenciaMax}</b></p>
+                                        </div>
+                                    )
+                                }
+                                if(product === 'motherboard'){
+                                    return(
+                                        <div className='dataDetail' key={`${id}B`}>
+                                            <p className='dataG'>Fabricante: <b>{fabricante}</b></p>
+                                            <p className='dataW'>Plataforma: <b>{plataforma}</b></p>
+                                            <p className='dataG'>Tipo de memoria RAM: <b>{compatibleRAM}</b></p>
+                                            <p className='dataW'>Memoria máxima soportada: <b>{memoriaMax}</b></p>
+                                            <p className='dataG'>Socket: <b>{compatibleZocalo}</b></p>
+                                            <p className='dataW'>Chipset: <b>{chipset}</b></p>
+                                            <p className='dataG'>Ranuras de expansión: <b>{ranuraExp}</b></p>
                                         </div>
                                     )
                                 }

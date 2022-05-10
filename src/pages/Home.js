@@ -1,11 +1,12 @@
 //Components
 import ItemListContainer from "../components/Main/ItemListContainer";
+import ItemFilters from '../components/Main/ItemFilters'
 
 export default function HomePage(){
 
     return(
         <div>
-            <h1>Placas de video</h1>
+            <ItemFilters/>
             <ItemListContainer/>
         </div>
     );

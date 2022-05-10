@@ -1,0 +1,67 @@
+.cardItem{
+    border:none;
+    box-shadow: 0px 0px 10px 0px rgba(31,30,30,0.57);
+    width: 14rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    align-items: center;
+    margin: 0.8rem 0.5rem;
+    border-radius: 7px;
+    justify-content: space-between;
+    min-height: 26rem;
+}
+
+.divImagen{
+    width: 13rem;
+    height: 13rem;
+    object-fit: cover;
+}
+
+.imagenProductos{
+    width: 100%;
+}
+
+.divData__h2{
+    line-height: 25px;
+    margin: 0;
+}
+
+.divData__h3{
+    margin: 0;
+    color: #6c7076;
+}
+
+.divBotonera{
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.btnSumaResta{
+    background-color: #4040db;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    height: 2rem;
+    width: 2rem;
+    font-size: 1.5rem;
+}
+
+.btnSumaResta:hover{
+    background-color: #6565dd;
+    cursor: pointer;
+}
+
+.btnSumaResta:disabled{
+    background-color: #bdbdbd;
+    color: black;
+    cursor: default;
+}
+
+.stock{
+    margin: 0;
+}

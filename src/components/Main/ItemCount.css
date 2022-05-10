@@ -1,0 +1,81 @@
+.ItemCountItem-btnsCard{
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+}
+
+.ItemCountItem-btnVerMas{
+    background-color: #4040db;
+    font-size: 0.9rem;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 7px 0 0 7px;
+}
+
+.ItemCountItem-btnVerMas:hover{
+    background-color: #6565dd;
+    cursor: pointer;
+}
+
+.ItemCountItem-btnAgregar{
+    background-color: #4178dd;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.4rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: 0 7px 7px 0;
+}
+
+.ItemCountItem-btnAgregarP{
+    display: none;
+}
+
+.ItemCountItem-btnAgregar:hover{
+    background-color: #628ee0;
+    color: black;
+    cursor: pointer;
+}
+
+.ItemCountItem-btnAgregar:disabled{
+    background-color: #bdbdbd;
+    color: black;
+    cursor: default;
+}
+
+.ItemCountDetail-btnVerMas{
+    display: none;
+}
+
+.ItemCountDetail-btnAgregar{
+    background-color: #4040db;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 12rem;
+    border: none;
+    border-radius: 7px;
+    padding: 1rem;
+}
+
+.ItemCountDetail-btnAgregar:hover{
+    background-color: #6565dd;
+    cursor: pointer;
+}
+
+.ItemCountDetail-btnAgregar:disabled{
+    background-color: #bdbdbd;
+    cursor: default;
+    color: black;
+}
+
+.ItemCountDetail-btnAgregarP{
+    font-size: 1.5rem
+}

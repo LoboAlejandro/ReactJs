@@ -1,0 +1,62 @@
+#carritoMenu{
+    text-align: center;
+}
+
+.MuiMenu-list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#carritoMenu li:hover{
+    cursor: default;
+}
+
+.listaProductosCarrito{
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+
+.listaProductosCarrito li{
+    min-height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+}
+
+.tituloCarrito{
+    padding: 0 0.5rem;
+}
+
+.imgItemsCarrito{
+    width: 5rem;
+}
+
+.btnFinalizarCarrito{
+    background-color: #4040db;
+    font-size: 0.9rem;
+    color: white;
+    width: fit-content;
+    height: fit-content;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 7px;
+    align-self: flex-end;
+}
+
+.btnFinalizarCarrito:hover{
+    cursor: pointer;
+    background-color: #3636c4;
+}
+
+.botoneraCarrito{
+    width: 100%;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end !important;
+}

@@ -1,0 +1,13 @@
+.itemList{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.divCargando{
+    margin-top: 10rem;
+}
+
+.msjCargando{
+    margin-top: 1rem;
+}
